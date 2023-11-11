@@ -69,41 +69,98 @@ const Characters = () => {
       id: 16,
       src: "/assets/img16.webp",
     },
+
     {
-      id: 8,
+      id: 17,
+      src: "/assets/img1.webp",
+    },
+    {
+      id: 18,
+      src: "/assets/img2.webp",
+    },
+    {
+      id: 19,
+      src: "/assets/img3.webp",
+    },
+    {
+      id: 20,
+      src: "/assets/img4.webp",
+    },
+    {
+      id: 21,
+      src: "/assets/img5.webp",
+    },
+    {
+      id: 22,
+      src: "/assets/img6.webp",
+    },
+    {
+      id: 23,
+      src: "/assets/img7.webp",
+    },
+    {
+      id: 24,
       src: "/assets/img8.webp",
     },
     {
-      id: 9,
+      id: 25,
       src: "/assets/img9.webp",
     },
     {
-      id: 10,
+      id: 26,
       src: "/assets/img10.webp",
     },
     {
-      id: 11,
+      id: 27,
       src: "/assets/img11.webp",
     },
     {
-      id: 12,
+      id: 28,
       src: "/assets/img12.webp",
     },
     {
-      id: 13,
+      id: 29,
       src: "/assets/img13.webp",
     },
     {
-      id: 14,
+      id: 30,
       src: "/assets/img14.webp",
     },
     {
-      id: 15,
+      id: 31,
       src: "/assets/img15.webp",
     },
     {
-      id: 16,
+      id: 32,
       src: "/assets/img16.webp",
+    },
+    {
+      id: 33,
+      src: "/assets/img1.webp",
+    },
+    {
+      id: 34,
+      src: "/assets/img2.webp",
+    },
+    {
+      id: 35,
+      src: "/assets/img3.webp",
+    },
+    {
+      id: 36,
+      src: "/assets/img4.webp",
+    },
+    {
+      id: 37,
+      src: "/assets/img5.webp",
+    },
+    {
+      id: 38,
+      src: "/assets/img6.webp",
+    },
+    {
+      id: 39,
+      src: "/assets/img7.webp",
     },
   ];
 
@@ -116,18 +173,37 @@ const Characters = () => {
 
             const currentIndex = Math.floor(index % 5);
             const isEven = currentLine % 2 !== 0;
+
+            var startDrawingPlaceLeft = -97.65;
+            var spaceHorizontalBetween = 78.125;
+
+            if (isEven) {
+              startDrawingPlaceLeft += 20;
+            }
+
+            var startDrawingPlaceTop = -15;
+            var spaceVerticalBetween = 19.5;
             // if (character?.customComponent) character.customComponent;
+            // $topSpace: 400px;
+            // $startDrawingPlaceTop: -600px;
+
             return (
               <div
-                className={classNames("absolute", classes.character, {
-                  [classes.evenRow]: isEven,
-                })}
+                className={classNames(
+                  "absolute transform w-full",
+                  classes.character
+                )}
                 style={{
-                  "--currentIndex": currentIndex,
-                  "--currentLine": currentLine,
+                  "--tw-translate-x": `${
+                    startDrawingPlaceLeft +
+                    spaceHorizontalBetween * currentIndex
+                  }%`,
+                  "--tw-translate-y": `${
+                    startDrawingPlaceTop + spaceVerticalBetween * currentLine
+                  }%`,
                 }}
               >
-                <CharacterAnimationIdle>
+                <CharacterAnimationIdle delay={0.05 * currentLine}>
                   {character.customComp ? (
                     character.customComp
                   ) : (

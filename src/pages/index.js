@@ -6,8 +6,6 @@ import MainCharacter from "@src/components/MainCharacter/MainCharacter";
 import Background from "@src/components/Background/Background";
 import CharacterAnimationIdle from "@src/components/CharacterAnimationIdle/CharacterAnimationIdle";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
   return (
     <>
