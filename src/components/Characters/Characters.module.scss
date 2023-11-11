@@ -1,0 +1,20 @@
+$currnetIndex: var(--currentIndex);
+$currentLine: var(--currentLine);
+$leftSpace: 800px;
+$topSpace: 400px;
+$startDrawingPlaceTop: -600px;
+$startDrawingPlaceLeft: -1000px;
+
+.character {
+  width: 100%;
+  left: calc($startDrawingPlaceLeft + $leftSpace * $currnetIndex);
+  top: calc($startDrawingPlaceTop + ($topSpace * $currentLine));
+
+  &.evenRow {
+    transform: translateX($leftSpace / 2);
+  }
+  //   z-index: calc((5 - $currentLine + $currnetIndex) * 10);
+  //   &:nth-child(2n) {
+  //     transform: translateX($leftSpace / 2);
+  //   }
+}

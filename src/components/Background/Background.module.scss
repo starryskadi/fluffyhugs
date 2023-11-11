@@ -1,0 +1,12 @@
+.bubbleContainer {
+  animation: scrollAnimation linear infinite 5s;
+}
+
+@keyframes scrollAnimation {
+  0% {
+    transform: translateY(0vh);
+  }
+  100% {
+    transform: translateY(-50vh);
+  }
+}
