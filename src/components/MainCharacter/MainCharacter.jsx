@@ -1,9 +1,20 @@
 import React from "react";
 import classes from "./MainCharacter.module.scss";
+import classNames from "classnames";
 
-const MainCharacter = () => {
+const MainCharacter = ({ characterState }) => {
+  console.log(characterState);
+  // Chracter state should be one of the following properties:
+  // laydown walk
+  // TODO: Implemnent the checking of the character state
+
   return (
-    <div className={classes.mainCharacter}>
+    <div
+      className={classNames(classes.mainCharacter, {
+        [classes.laydown]: characterState === "laydown",
+        [classes.walk]: characterState === "walk",
+      })}
+    >
       <div className="absolute top-0 left-0">
         <img src="/assets/human-hair.png" />
       </div>

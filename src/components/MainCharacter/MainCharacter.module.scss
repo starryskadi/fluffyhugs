@@ -3,5 +3,10 @@
   width: 100%;
   aspect-ratio: 10 /17;
   position: relative;
-  transform: translateY(20%);
+  transform: translateY(25%);
+  transition: transform 1.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+  &.laydown {
+    transform: translateY(25%) rotate(-90deg) scale(0.5);
+  }
 }

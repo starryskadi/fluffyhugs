@@ -2,8 +2,12 @@ import React from "react";
 import CharacterAnimationIdle from "../CharacterAnimationIdle/CharacterAnimationIdle";
 import classes from "./Characters.module.scss";
 import classNames from "classnames";
+import useStore from "@src/store/store";
+import MainCharacter from "@src/components/MainCharacter/MainCharacter";
 
 const Characters = () => {
+  const currentPage = useStore((state) => state.currentPage);
+
   const characters = [
     {
       id: 1,
@@ -72,7 +76,8 @@ const Characters = () => {
 
     {
       id: 17,
-      src: "/assets/img1.webp",
+      // src: "/assets/img1.webp",
+      customComp: MainCharacter,
     },
     {
       id: 18,
@@ -164,8 +169,10 @@ const Characters = () => {
     },
   ];
 
+  const totalLines = characters.length / 5;
+
   return (
-    <div className="flex items-center justify-center h-screen w-full fixed">
+    <div className="flex items-center justify-center h-screen w-full overflow-hidden fixed pointer-events-none top-0 left-0">
       <div className="w-[1024px] aspect-[1/2]">
         <div className="relative">
           {characters.map((character, index) => {
@@ -183,14 +190,33 @@ const Characters = () => {
 
             var startDrawingPlaceTop = -15;
             var spaceVerticalBetween = 19.5;
-            // if (character?.customComponent) character.customComponent;
-            // $topSpace: 400px;
-            // $startDrawingPlaceTop: -600px;
+
+            const isFirstPage = currentPage === 0;
+
+            if (character?.customComp) {
+              return (
+                <div
+                  className="absolute w-full transform scale-[1.2]"
+                  style={{
+                    zIndex: index,
+                  }}
+                >
+                  <CharacterAnimationIdle
+                    delay={0.05 * currentLine}
+                    stop={!isFirstPage}
+                  >
+                    <character.customComp
+                      characterState={isFirstPage ? null : "laydown"}
+                    />
+                  </CharacterAnimationIdle>
+                </div>
+              );
+            }
 
             return (
               <div
                 className={classNames(
-                  "absolute transform w-full",
+                  "absolute transform w-full transition-transform ",
                   classes.character
                 )}
                 style={{
@@ -201,15 +227,24 @@ const Characters = () => {
                   "--tw-translate-y": `${
                     startDrawingPlaceTop + spaceVerticalBetween * currentLine
                   }%`,
+                  zIndex: index,
                 }}
               >
-                <CharacterAnimationIdle delay={0.05 * currentLine}>
-                  {character.customComp ? (
-                    character.customComp
-                  ) : (
+                <div
+                  className="transform transition-transform duration-1000 "
+                  style={{
+                    "--tw-translate-y": isFirstPage ? "0vw" : "200vw",
+                    "--tw-translate-x": isFirstPage ? "0vw" : "200vw",
+                    transitionDelay: `${0.03 * (totalLines - currentLine)}s`,
+                  }}
+                >
+                  <CharacterAnimationIdle
+                    delay={0.05 * currentLine}
+                    stop={!isFirstPage}
+                  >
                     <img src={character.src} className="w-full" />
-                  )}
-                </CharacterAnimationIdle>
+                  </CharacterAnimationIdle>
+                </div>
               </div>
             );
           })}

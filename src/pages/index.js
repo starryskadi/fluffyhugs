@@ -5,6 +5,7 @@ import Loading from "@src/components/Loading/Loading";
 import MainCharacter from "@src/components/MainCharacter/MainCharacter";
 import Background from "@src/components/Background/Background";
 import CharacterAnimationIdle from "@src/components/CharacterAnimationIdle/CharacterAnimationIdle";
+import PageScroll from "@src/components/PageScroll/PageScroll";
 
 export default function Home() {
   return (
@@ -16,15 +17,23 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Characters></Characters>
+        <PageScroll>
+          <section className="w-full h-screen bg-secondary">
+            <Characters></Characters>
+          </section>
 
-        <div className="flex items-center justify-center h-screen w-full fixed">
-          <div className="w-[1200px] ">
-            <CharacterAnimationIdle>
-              <MainCharacter></MainCharacter>
-            </CharacterAnimationIdle>
-          </div>
-        </div>
+          <section className="w-full h-screen bg-secondary">
+            <div className="container mx-auto flex items-center justify-center h-full max-w-[800px]">
+              <img src="/assets/logo.webp" alt="logo" />
+            </div>
+          </section>
+          <section className="w-full h-screen">
+            <p> Test </p>
+          </section>
+          <section className="w-full h-screen">
+            <p> Test </p>
+          </section>
+        </PageScroll>
 
         <Loading></Loading>
       </main>
