@@ -239,7 +239,7 @@ const Characters = () => {
                 <div
                   className="transform transition-transform duration-1000 "
                   style={{
-                    "--tw-translate-y": isFirstPage ? "0vw" : "200vw",
+                    "--tw-translate-y": isFirstPage ? "0vw" : "200vh",
                     "--tw-translate-x": isFirstPage ? "0vw" : "200vw",
                     transitionDelay: `${0.03 * (totalLines - currentLine)}s`,
                   }}
