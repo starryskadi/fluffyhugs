@@ -24,30 +24,30 @@ const Background = () => {
     >
       {/* Paper Clip */}
       <div className="relative h-full">
-        <div className="absolute top-0 right-0  ">
-          <div className="w-[200px] h-[300px] transform absolute top-0 right-0">
+        <div
+          className={classNames("absolute top-0 right-0 ", classes.paper, {
+            [classes.active]: currentPage === 2,
+          })}
+        >
+          <div className="w-[100px] md:w-[200px] aspect-[2/3] transform absolute top-0 right-0">
             <div
               className="bg-[#ffe1aa] w-full h-full"
               style={{
-                transform: "translate(154px, -117px) rotate(-45deg)",
+                transform: "translate(77%, -39%) rotate(-45deg)",
               }}
             ></div>
           </div>
-          <div className="w-[200px] h-[300px] transform -rotate-45 translate-x-0 translate-y-0 overflow-hidden">
+          <div className="w-[100px] md:w-[200px] aspect-[2/3] transform -rotate-45 translate-x-0 translate-y-0 overflow-hidden">
             <div
               className="bg-white w-full h-full relative"
               style={{
-                transform: "translate(170px, -70px) rotate(34deg)",
+                transform: "translate(85%, -23.4%) rotate(34deg)",
               }}
             ></div>
           </div>
           <img
-            src="/assets/neko.webp"
-            className="absolute top-0 right-0"
-            style={{
-              filter: "drop-shadow(2px 4px 6px #eeeeee);",
-              transform: "translate(-55px, 78px);",
-            }}
+            src="/assets/burasagari.webp"
+            className={classNames("absolute top-0 right-0", classes.neko)}
           />
         </div>
       </div>

@@ -6,6 +6,7 @@ import MainCharacter from "@src/components/MainCharacter/MainCharacter";
 import Background from "@src/components/Background/Background";
 import CharacterAnimationIdle from "@src/components/CharacterAnimationIdle/CharacterAnimationIdle";
 import PageScroll from "@src/components/PageScroll/PageScroll";
+import JumpyText from "@src/components/JumpyText/JumpyText";
 
 export default function Home() {
   return (
@@ -28,8 +29,10 @@ export default function Home() {
               <img src="/assets/logo.webp" alt="logo" />
             </div>
           </section>
-          <section className="w-full h-screen bg-secondary">
-            <p> </p>
+          <section className="w-full h-screen bg-secondary flex items-center justify-center">
+            <div className="px-4">
+              <JumpyText text="Welcome to Fluffy Hugs"></JumpyText>
+            </div>
           </section>
         </PageScroll>
 

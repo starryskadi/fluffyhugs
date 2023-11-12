@@ -3,18 +3,17 @@ import classNames from "classnames";
 import useStore from "@src/store/store";
 
 const Loading = () => {
-  const load = useStore((state) => state.load);
+  // const load = useStore((state) => state.load);
   const isLoaded = useStore((state) => state.isLoaded);
 
   useEffect(() => {
     // TODO: Implement the assets loading here
-    const timeout = setTimeout(() => {
-      load(true);
-    }, 3000);
-
-    return () => {
-      clearTimeout(timeout);
-    };
+    // const timeout = setTimeout(() => {
+    //   load(true);
+    // }, 3000);
+    // return () => {
+    //   clearTimeout(timeout);
+    // };
   }, []);
 
   return (

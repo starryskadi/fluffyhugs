@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollToPlugin);
 
 const PageScroll = ({ children }) => {
   const changePage = useStore((state) => state.changePage);
+  const load = useStore((state) => state.load);
 
   const parentRef = React.useRef(null);
   let prevAnimation = null;
@@ -28,18 +29,19 @@ const PageScroll = ({ children }) => {
   React.useEffect(() => {
     if (parentRef.current) {
       Array.from(parentRef.current.children).forEach((child, index) => {
-        ScrollTrigger.create({
+        const firstScrollTrigger = ScrollTrigger.create({
           trigger: child,
-
           onEnter: () => {
             changePage(index);
             goToSection(index);
           },
         });
 
+        console.log(firstScrollTrigger);
+
         ScrollTrigger.create({
           trigger: child,
-          start: "bottom-=20 bottom",
+          start: "bottom+=30 bottom",
 
           onEnterBack: () => {
             changePage(index);
@@ -47,6 +49,8 @@ const PageScroll = ({ children }) => {
           },
         });
       });
+
+      load(true);
     }
 
     return () => {
