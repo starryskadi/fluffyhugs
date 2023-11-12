@@ -27,39 +27,34 @@ const PageScroll = ({ children }) => {
   };
 
   React.useEffect(() => {
-    if (parentRef.current) {
-      Array.from(parentRef.current.children).forEach((child, index) => {
-        const firstScrollTrigger = ScrollTrigger.create({
-          trigger: child,
-          onEnter: () => {
-            changePage(index);
-            goToSection(index);
-          },
-        });
+    ScrollTrigger.create({
+      trigger: document.body,
+      start: "top top",
+      end: "bottom bottom",
+      markers: true,
+      scrub: 1,
+      onUpdate: (self) => {
+        const progress = self.progress.toFixed(2);
 
-        console.log(firstScrollTrigger);
+        if (progress > 0.7 && progress <= 1) {
+          changePage(2);
+        } else if (progress > 0.3 && progress < 0.7) {
+          changePage(1);
+        } else {
+          changePage(0);
+        }
+      },
+      snap: {
+        snapTo: [0, 0.5, 1],
+        delay: 0.001,
+        duration: { min: 0.3, max: 1.5 },
+        inertia: false,
+      },
+    });
 
-        ScrollTrigger.create({
-          trigger: child,
-          start: "bottom+=20 bottom",
-
-          onEnterBack: () => {
-            changePage(index);
-            goToSection(index);
-          },
-        });
-      });
-
+    window.setTimeout(() => {
       load(true);
-    }
-
-    return () => {
-      prevAnimation && prevAnimation.kill();
-      const allScrollTrigger = ScrollTrigger.getAll();
-      allScrollTrigger.forEach((scrollTrigger) => {
-        scrollTrigger.kill();
-      });
-    };
+    }, 1000);
   }, [parentRef.current, children]);
 
   return <div ref={parentRef}>{children}</div>;
