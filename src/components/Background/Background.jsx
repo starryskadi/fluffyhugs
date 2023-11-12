@@ -1,9 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import classes from "./Background.module.scss";
 import classNames from "classnames";
-import Bubble from "../Bubble/Bubble";
 import useStore from "@src/store/store";
-import { gsap } from "gsap";
 
 const Background = () => {
   const ref = useRef(null);
