@@ -31,7 +31,6 @@ const PageScroll = ({ children }) => {
       trigger: document.body,
       start: "top top",
       end: "bottom bottom",
-      markers: true,
       scrub: 1,
       onUpdate: (self) => {
         const progress = self.progress.toFixed(2);
