@@ -18,20 +18,18 @@ export default function Home() {
       </Head>
       <main>
         <PageScroll>
-          <section className="w-full h-screen bg-secondary">
+          <section className="w-full h-screen bg-secondary ">
+            <Background></Background>
             <Characters></Characters>
           </section>
 
           <section className="w-full h-screen bg-secondary">
-            <div className="container mx-auto flex items-center justify-center h-full max-w-[800px]">
+            <div className="container mx-auto flex items-center justify-center h-full max-w-[800px] px-4 relative z-10">
               <img src="/assets/logo.webp" alt="logo" />
             </div>
           </section>
-          <section className="w-full h-screen">
-            <p> Test </p>
-          </section>
-          <section className="w-full h-screen">
-            <p> Test </p>
+          <section className="w-full h-screen bg-secondary">
+            <p> </p>
           </section>
         </PageScroll>
 

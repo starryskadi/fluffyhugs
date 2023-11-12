@@ -8,5 +8,19 @@
 
   &.laydown {
     transform: translateY(25%) rotate(-90deg) scale(0.5);
+    @media (max-width: 500px) {
+      transform: translateY(25%) rotate(-90deg) scale(0.35);
+    }
+
+    @media (max-width: 360px) {
+      transform: translateY(25%) rotate(-90deg) scale(0.3);
+    }
+  }
+
+  &.walk {
+    transform: translateX(-30%) translateY(30%) scale(0.5);
+    @media (max-width: 500px) {
+      transform: translateX(-10%) translateY(45%) scale(0.5);
+    }
   }
 }

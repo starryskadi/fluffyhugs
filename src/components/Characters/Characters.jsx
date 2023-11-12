@@ -76,8 +76,7 @@ const Characters = () => {
 
     {
       id: 17,
-      // src: "/assets/img1.webp",
-      customComp: MainCharacter,
+      src: "/assets/img1.webp",
     },
     {
       id: 18,
@@ -98,6 +97,7 @@ const Characters = () => {
     {
       id: 22,
       src: "/assets/img6.webp",
+      customComp: MainCharacter,
     },
     {
       id: 23,
@@ -173,7 +173,7 @@ const Characters = () => {
 
   return (
     <div className="flex items-center justify-center h-screen w-full overflow-hidden fixed pointer-events-none top-0 left-0">
-      <div className="w-[1024px] aspect-[1/2]">
+      <div className="w-[1024px] lg:w-[600px] aspect-[1/2] transition-all min-w-[500px]">
         <div className="relative">
           {characters.map((character, index) => {
             const currentLine = Math.floor(index / 5);
@@ -185,17 +185,20 @@ const Characters = () => {
             var spaceHorizontalBetween = 78.125;
 
             if (isEven) {
-              startDrawingPlaceLeft += 20;
+              startDrawingPlaceLeft += 30;
             }
 
-            var startDrawingPlaceTop = -15;
+            var startDrawingPlaceTop = -30;
             var spaceVerticalBetween = 19.5;
 
             const isFirstPage = currentPage === 0;
+            const isSecondPage = currentPage === 1;
+            const isLastPage = currentPage === 2;
 
             if (character?.customComp) {
               return (
                 <div
+                  key={character.id}
                   className="absolute w-full transform scale-[1.2]"
                   style={{
                     zIndex: index,
@@ -206,7 +209,9 @@ const Characters = () => {
                     stop={!isFirstPage}
                   >
                     <character.customComp
-                      characterState={isFirstPage ? null : "laydown"}
+                      characterState={
+                        (isSecondPage && "laydown") || (isLastPage && "walk")
+                      }
                     />
                   </CharacterAnimationIdle>
                 </div>
@@ -215,6 +220,7 @@ const Characters = () => {
 
             return (
               <div
+                key={character.id}
                 className={classNames(
                   "absolute transform w-full transition-transform ",
                   classes.character

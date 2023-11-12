@@ -3,7 +3,6 @@ import classes from "./MainCharacter.module.scss";
 import classNames from "classnames";
 
 const MainCharacter = ({ characterState }) => {
-  console.log(characterState);
   // Chracter state should be one of the following properties:
   // laydown walk
   // TODO: Implemnent the checking of the character state

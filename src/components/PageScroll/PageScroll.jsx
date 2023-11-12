@@ -30,7 +30,7 @@ const PageScroll = ({ children }) => {
       Array.from(parentRef.current.children).forEach((child, index) => {
         ScrollTrigger.create({
           trigger: child,
-          markers: false,
+
           onEnter: () => {
             changePage(index);
             goToSection(index);
@@ -39,8 +39,8 @@ const PageScroll = ({ children }) => {
 
         ScrollTrigger.create({
           trigger: child,
-          markers: false,
-          start: "bottom bottom",
+          start: "bottom-=20 bottom",
+
           onEnterBack: () => {
             changePage(index);
             goToSection(index);
@@ -50,6 +50,7 @@ const PageScroll = ({ children }) => {
     }
 
     return () => {
+      prevAnimation && prevAnimation.kill();
       const allScrollTrigger = ScrollTrigger.getAll();
       allScrollTrigger.forEach((scrollTrigger) => {
         scrollTrigger.kill();

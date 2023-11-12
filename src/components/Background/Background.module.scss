@@ -1,12 +1,23 @@
-.bubbleContainer {
-  animation: scrollAnimation linear infinite 5s;
+.background {
+  background-image: url("/assets/bubbles/bubble-background.png");
+  background-size: 1500px 1500px;
+  background-position: 0 0;
+  background-repeat: repeat;
+  animation: backgroundAnimation linear 5s infinite;
+  transition: transform 0.5s, opacity 0.5s;
+  @media (max-width: 480px) {
+    background-size: 750px;
+  }
 }
 
-@keyframes scrollAnimation {
+@keyframes backgroundAnimation {
   0% {
-    transform: translateY(0vh);
+    background-position: 0 0;
   }
   100% {
-    transform: translateY(-50vh);
+    background-position: 0 -1500px;
+    @media (max-width: 480px) {
+      background-position: 0 -750px;
+    }
   }
 }
