@@ -41,7 +41,7 @@ const PageScroll = ({ children }) => {
 
         ScrollTrigger.create({
           trigger: child,
-          start: "bottom+=30 bottom",
+          start: "bottom+=20 bottom",
 
           onEnterBack: () => {
             changePage(index);
